@@ -8,16 +8,12 @@ const cleanApi = (
     return {
       id: drive.id,
       name: drive.name.forename,
-      surname: drive.name.surname,
       image: drive.image.url,
-      nationality: drive.nationality,
-      birthdate: drive.dob,
       teams: drive.teams,
-      description: drive.description,
     };
   });
 
-const getDrivers = async (req, res) => {
+const getAllDrivers = async (req, res) => {
   // Obtiene todos los drivers de la API
   try {
     const response = await axios.get(URL);
@@ -29,4 +25,4 @@ const getDrivers = async (req, res) => {
   }
 };
 
-module.exports = { getDrivers };
+//module.exports = { getAllDrivers };
