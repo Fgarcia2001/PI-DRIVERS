@@ -1,6 +1,8 @@
 const {
   getAllDrivers,
   getSomeDrivers,
+  getDriverId,
+  postDriver,
 } = require("../controllers/driversController");
 
 const getDriversHandler = async (req, res) => {
@@ -12,23 +14,41 @@ const getDriversHandler = async (req, res) => {
     } else {
       const Name = name.toUpperCase();
       const someDrivers = await getSomeDrivers(Name);
-      res.status(200).json(someDrivers);
+      res.status(200).json(someDrivers.slice(0, 15));
     }
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 };
 
-const getDriverIdHandler = (req, res) => {
+const getDriverIdHandler = async (req, res) => {
   const { id } = req.params;
-  res.send(`Detalle del driver numero ${id}`);
+  const source = isNaN(id) ? "bdd" : "api";
+  try {
+    const driverDetail = await getDriverId(id, source);
+    res.status(200).json(driverDetail);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
 };
 
-const createDriver = (req, res) => {
-  const { name, teams } = req.body;
-  res.send(
-    `Creaste un driver con el nombre ${name} y estuvo en los teams: ${teams}`
-  );
+const postCreateHandler = async (req, res) => {
+  try {
+    const { name, surname, description, image, nationality, birthdate, teams } =
+      req.body;
+    const post = await postDriver({
+      name,
+      surname,
+      description,
+      image,
+      nationality,
+      birthdate,
+      teams,
+    });
+    res.status(200).send(post);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
-module.exports = { getDriversHandler, getDriverIdHandler, createDriver };
+module.exports = { getDriversHandler, getDriverIdHandler, postCreateHandler };

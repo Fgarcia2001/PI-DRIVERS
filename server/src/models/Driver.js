@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.UUID,
         primaryKey: true,
-        allowNull: false,
         defaultValue: DataTypes.UUIDV4,
       },
       name: {
@@ -33,7 +32,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       birthdate: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },
