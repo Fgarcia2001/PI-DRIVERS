@@ -22,7 +22,7 @@ const Details = () => {
       <h2>Id: {driver.id}</h2>
       <h2>Nombre: {driver.name} </h2>
       <h2>Apellido: {driver.surname}</h2>
-      <h2>Nacionalidad: {driver.surname}</h2>
+      <h2>Nacionalidad: {driver.nationality}</h2>
       <h2>Descripcion:{driver.description}</h2>
       <h2>Fecha de nacimiento: {driver.birthdate}</h2>
       <h2>Teams: {driver.teams}</h2>

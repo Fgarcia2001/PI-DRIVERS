@@ -12,7 +12,9 @@ import {
 
 const initialState = {
   allDrivers: [],
+  driversCopy: [],
   driver: [],
+  teams: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -22,6 +24,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allDrivers: payload,
+        driversCopy: payload,
       };
     case GET_DRIVER_ID:
       return {
@@ -32,6 +35,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allDrivers: payload,
+      };
+    case GET_TEAMS:
+      return {
+        ...state,
+        teams: payload,
       };
     default:
       return {

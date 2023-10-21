@@ -1,4 +1,9 @@
-import { GET_DRIVERS, GET_DRIVER_ID, GET_DRIVER_NAME } from "./types";
+import {
+  GET_DRIVERS,
+  GET_DRIVER_ID,
+  GET_DRIVER_NAME,
+  GET_TEAMS,
+} from "./types";
 import axios from "axios";
 
 const URL_DRIVERS = "http://localhost:3001/drivers";
@@ -37,4 +42,15 @@ const getDriverName = (driver) => {
   };
 };
 
-export { getDrivers, getDriverId, getDriverName };
+const getTeams = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/teams");
+      dispatch({ type: GET_TEAMS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export { getDrivers, getDriverId, getDriverName, getTeams };

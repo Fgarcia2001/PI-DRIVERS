@@ -7,7 +7,7 @@ const SearchBar = () => {
   const [driver, setDriver] = useState("");
 
   const handleChange = (event) => {
-    setDriver(event.target.value);
+    setDriver(event.target.value.trim());
   };
   const handleSubmit = (event) => {
     event.preventDefault();
