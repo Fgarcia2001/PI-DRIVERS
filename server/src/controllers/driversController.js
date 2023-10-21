@@ -84,7 +84,7 @@ const getSomeDrivers = async (name) => {
       created: driver.created,
     };
   });
-  console.log(name);
+
   const result = [...driversApi, ...driverBd];
   return result;
 };
