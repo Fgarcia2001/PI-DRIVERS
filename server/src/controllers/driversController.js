@@ -154,7 +154,7 @@ const postDriver = async ({
   });
 
   if (existingDriver) {
-    return { message: "Ya existe el driver" };
+    return "Ya existe";
   }
 
   const newDriver = await Driver.create({
@@ -177,7 +177,7 @@ const postDriver = async ({
   teamsBd.forEach((element) => {
     newDriver.addTeam(element);
   });
-  return newDriver;
+  return "Driver creado con exito!";
 };
 
 module.exports = { getAllDrivers, getSomeDrivers, getDriverId, postDriver };

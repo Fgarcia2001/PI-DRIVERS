@@ -3,9 +3,10 @@ import style from "./Form.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getTeams } from "../../redux/actions";
+import { getTeams, postDriver } from "../../redux/actions";
 import validate from "./Validate";
 const Form = () => {
+  const dispatch = useDispatch();
   const teams = useSelector((state) => state.teams);
 
   const [state, setState] = useState({
@@ -65,7 +66,6 @@ const Form = () => {
     );
   };
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTeams());
   }, [dispatch]);
@@ -74,13 +74,18 @@ const Form = () => {
     setIsSubmitDisabled(hasErrors);
   }, [errors]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(postDriver(state));
+  };
+
   return (
     <div className={style.container}>
       <Link to="/home" className={style.link}>
         BACK
       </Link>
 
-      <form className={style.form}>
+      <form className={style.form} onSubmit={handleSubmit}>
         <label>Name:</label>
         <input
           className={style.input}

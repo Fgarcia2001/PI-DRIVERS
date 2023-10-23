@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./Cards.module.css";
 
 import { useSelector } from "react-redux";

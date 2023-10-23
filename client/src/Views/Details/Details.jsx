@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getDriverId } from "../../redux/actions";
+import { clearDetail, getDriverId } from "../../redux/actions";
 const Details = () => {
   const { id } = useParams();
-  const driver = useSelector((state) => state.driver);
+  const driver = useSelector((state) => state.detail);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDriverId(id));
-  }, [dispatch, id]);
+    return () => {
+      dispatch(clearDetail());
+    };
+  }, [dispatch]);
 
   return (
     <div>

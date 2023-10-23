@@ -7,16 +7,19 @@ const SearchBar = () => {
   const [driver, setDriver] = useState("");
 
   const handleChange = (event) => {
-    setDriver(event.target.value.trim());
+    if (event.target.value != "") {
+      setDriver(event.target.value.trim());
+    }
   };
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(getDriverName(driver));
+    document.getElementById("search").value = "";
   };
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} type="text" />{" "}
+        <input id="search" onChange={handleChange} type="text" />
         <input type="submit"></input>
       </form>
     </div>
