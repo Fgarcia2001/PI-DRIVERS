@@ -6,6 +6,7 @@ import {
   POST_DRIVER,
   CLEAR_DETAIL,
   PAGINATE,
+  FILTER,
 } from "./types";
 import axios from "axios";
 
@@ -56,20 +57,16 @@ const getTeams = () => {
   };
 };
 
-/* const postDriver = (state) => {
-  return async (dispatch) => {
+const postDriver = (state) => {
+  return async () => {
     try {
       const response = await axios.post(`${URL_DRIVERS}`, state);
-      dispatch({
-        type: POST_DRIVER,
-        payload: state,
-      });
       alert(`${response.data}`);
     } catch (error) {
       alert("Error al crear el driver");
     }
   };
-}; */
+};
 
 const clearDetail = () => {
   return (dispatch) => {
@@ -88,12 +85,22 @@ const page = (order) => {
   };
 };
 
+const driverFilters = (value) => {
+  return (dispatch) => {
+    dispatch({
+      type: FILTER,
+      payload: value,
+    });
+  };
+};
+
 export {
   getDrivers,
   getDriverId,
   getDriverName,
   getTeams,
-  /* postDriver, */
+  postDriver,
   clearDetail,
   page,
+  driverFilters,
 };

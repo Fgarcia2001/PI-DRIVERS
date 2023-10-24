@@ -9,3 +9,4 @@ export const ALPHABETIC_ORDER = "ALPHABETIC_ORDER";
 export const BIRTHDATE_ORDER = "BIRTHDATE_ORDER";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const PAGINATE = "PAGINATE";
+export const FILTER = "FILTER";

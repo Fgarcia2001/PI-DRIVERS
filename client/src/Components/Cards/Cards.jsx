@@ -10,8 +10,8 @@ const Cards = () => {
 
   return (
     <div className={style.cards}>
-      {drivers.map((driver) => {
-        return (
+      {drivers.length ? (
+        drivers.map((driver) => (
           <Link key={driver.id} to={`/detail/${driver.id}`}>
             <Card
               name={driver.name}
@@ -19,8 +19,10 @@ const Cards = () => {
               teams={driver.teams}
             />
           </Link>
-        );
-      })}
+        ))
+      ) : (
+        <h2>No se encontró ningún driver</h2>
+      )}
     </div>
   );
 };

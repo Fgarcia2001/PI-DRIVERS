@@ -13,13 +13,14 @@ const cleanApi = (
       name: drive.name.forename,
       image: drive.image.url ? drive.image.url : DEFAULT_IMAGE,
       teams: drive.teams,
+      birthdate: drive.dob,
       created: false,
     };
   });
 
 const getAllDrivers = async () => {
   let dataBase = await Driver.findAll({
-    attributes: ["id", "name", "image", "created"],
+    attributes: ["id", "name", "image", "created", "birthdate"],
     include: {
       model: Team,
       attributes: ["name"],
@@ -37,6 +38,7 @@ const getAllDrivers = async () => {
       id: driver.id,
       name: driver.name,
       image: driver.image,
+      birthdate: driver.birthdate,
       teams: driver.teams,
       created: driver.created,
     };
@@ -58,7 +60,7 @@ const getSomeDrivers = async (name) => {
   });
   //Extraigo algunos drivers de la bd
   let driverBd = await Driver.findAll({
-    attributes: ["id", "name", "image", "created"],
+    attributes: ["id", "name", "image", "created", "birthdate"],
     include: {
       model: Team,
       attributes: ["name"],
@@ -80,6 +82,7 @@ const getSomeDrivers = async (name) => {
       id: driver.id,
       name: driver.name,
       image: driver.image,
+      birthdate: driver.birthdate,
       teams: driver.teams,
       created: driver.created,
     };
@@ -96,7 +99,7 @@ const getDriverId = async (id, source) => {
       id: driver.data.id,
       name: driver.data.name.forename,
       surname: driver.data.name.surname,
-      image: driver.data.image.url,
+      image: driver.data.image.url ? driver.data.image.url : DEFAULT_IMAGE,
       nationality: driver.data.nationality,
       birthdate: driver.data.dob,
       description: driver.data.description,
