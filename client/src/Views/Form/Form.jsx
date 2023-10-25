@@ -86,7 +86,7 @@ const Form = () => {
       </Link>
 
       <form className={style.form} onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label className={style.label}>NAME</label>
         <input
           className={style.input}
           name="name"
@@ -94,8 +94,8 @@ const Form = () => {
           onChange={handleChange}
           type="text"
         />
-        {errors.name && <p>{errors.name}</p>}
-        <label className={style.label}>Lastname:</label>
+        {errors.name ? <p className={style.error}>{errors.name}</p> : <p> </p>}
+        <label className={style.label}>LASTNAME</label>
         <input
           className={style.input}
           value={state.surname}
@@ -103,8 +103,12 @@ const Form = () => {
           onChange={handleChange}
           type="text"
         />
-        {errors.surname && <p>{errors.surname}</p>}
-        <label className={style.label}>Nationality:</label>
+        {errors.surname ? (
+          <p className={style.error}>{errors.surname}</p>
+        ) : (
+          <p> </p>
+        )}
+        <label className={style.label}>NATIONALITY</label>
         <input
           className={style.input}
           name="nationality"
@@ -112,8 +116,12 @@ const Form = () => {
           onChange={handleChange}
           type="text"
         />
-        {errors.nationality && <p>{errors.nationality}</p>}
-        <label className={style.label}>Image:</label>
+        {errors.nationality ? (
+          <p className={style.error}>{errors.nationality}</p>
+        ) : (
+          <p className={style.espacio}> </p>
+        )}
+        <label className={style.label}>IMAGE</label>
         <input
           className={style.input}
           name="image"
@@ -121,7 +129,7 @@ const Form = () => {
           type="text"
         />
 
-        <label className={style.label}>Description:</label>
+        <label className={style.label}>DESCRIPTION</label>
         <input
           className={style.input}
           name="description"
@@ -129,15 +137,20 @@ const Form = () => {
           type="text"
         />
 
-        <label className={style.label}>Birthdate</label>
+        <label className={style.label}>BIRTHDATE</label>
         <input
           className={style.input}
           name="birthdate"
           onChange={handleChange}
           type="date"
         />
-        <label className={style.label}>Teams</label>
-        <select onChange={handleChange} name="teams" value={state.teams}>
+        <label className={style.label}>TEAMS</label>
+        <select
+          onChange={handleChange}
+          name="teams"
+          value={state.teams}
+          className={style.teamSelection}
+        >
           {teams.map((team) => {
             return (
               <option value={team} key={team}>
@@ -146,10 +159,10 @@ const Form = () => {
             );
           })}
         </select>
-        {errors.teams && <p>{errors.teams}</p>}
+        {errors.teams && <p className={style.error}>{errors.teams}</p>}
         <div className={style.teams}>
           {state.teams.map((selectedTeam) => (
-            <div key={selectedTeam}>
+            <div key={selectedTeam} className={style.team}>
               {selectedTeam}
               <button
                 className={style.button}

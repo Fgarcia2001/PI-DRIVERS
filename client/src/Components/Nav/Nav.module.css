@@ -1,6 +1,56 @@
 .containerNav {
   display: flex;
   justify-content: space-around;
-  height: 50px;
-  background-color: rgba(0, 0, 255, 0.622);
+  height: 60px;
+  background: linear-gradient(to right, #ff00007d, #0000ff86);
+  align-items: center;
+  border-bottom: 2px solid rgba(247, 242, 242, 0.209);
+  backdrop-filter: blur(5px);
+}
+
+.botones {
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: medium;
+  width: 85px;
+  height: 50%;
+  border-radius: 10px;
+  background-color: rgb(242, 242, 242);
+  box-shadow: 5px 5px 10px rgb(0, 0, 0);
+  border: 1px solid white;
+  transition: transform 0.1s;
+}
+.botones:hover {
+  transform: scale(1.1);
+  background-color: black;
+  color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 10px rgb(255, 255, 255);
+}
+
+.exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: large;
+  border: 2px solid black;
+  height: 50%;
+  width: 85px;
+  background-color: rgb(255, 25, 25);
+  text-decoration: none;
+  transition: transform 0.1s;
+}
+.exit:hover {
+  background-color: black;
+  color: red;
+  box-shadow: 5px 5px 10px rgb(0, 0, 0);
+  transform: scale(1.2);
 }

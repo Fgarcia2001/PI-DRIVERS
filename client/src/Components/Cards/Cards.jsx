@@ -12,7 +12,11 @@ const Cards = () => {
     <div className={style.cards}>
       {drivers.length ? (
         drivers.map((driver) => (
-          <Link key={driver.id} to={`/detail/${driver.id}`}>
+          <Link
+            className={style.card}
+            key={driver.id}
+            to={`/detail/${driver.id}`}
+          >
             <Card
               name={driver.name}
               image={driver.image}
@@ -21,7 +25,7 @@ const Cards = () => {
           </Link>
         ))
       ) : (
-        <h2>No se encontró ningún resultado</h2>
+        <h2 className={style.ninguno}>Not found anywhere result</h2>
       )}
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { getDriverName } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import style from "./SearchBar.module.css";
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [driver, setDriver] = useState("");
@@ -17,10 +18,16 @@ const SearchBar = () => {
     document.getElementById("search").value = "";
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input id="search" onChange={handleChange} type="text" />
-        <input type="submit"></input>
+    <div className={style.formContainer}>
+      <form onSubmit={handleSubmit} className={style.form}>
+        <input
+          id="search"
+          onChange={handleChange}
+          type="text"
+          className={style.search}
+          placeholder="Name"
+        />
+        <input type="submit" className={style.enviar} value="Search"></input>
       </form>
     </div>
   );

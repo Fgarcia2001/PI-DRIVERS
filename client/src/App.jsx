@@ -5,19 +5,19 @@ import Home from "./Views/Home/Home";
 import Details from "./Views/Details/Details";
 import Form from "./Views/Form/Form";
 import Nav from "./Components/Nav/Nav";
-import Delete from "./Components/Delete/Delete";
+import About from "./Components/About/About";
 function App() {
   const location = useLocation();
   return (
     <div className="App">
       {(location.pathname === "/home" && <Nav />) ||
-        (location.pathname === "/delete" && <Nav />)}
+        (location.pathname === "/about" && <Nav />)}
       <Routes>
         <Route path="/" element={<Landing />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/detail/:id" element={<Details />}></Route>
         <Route path="/create" element={<Form />}></Route>
-        <Route path="/delete" element={<Delete />}></Route>
+        <Route path="/about" element={<About />}></Route>
       </Routes>
     </div>
   );

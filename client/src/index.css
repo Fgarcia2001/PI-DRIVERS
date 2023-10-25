@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("./images/fondoGeneral.jpg");
+  background-image: url("https://www.prensalibre.com/wp-content/uploads/2019/02/20190218-636860859771024369.jpg?quality=82");
+  background-repeat: no-repeat;
+  background-position: center top;
   background-size: cover;
-  background-attachment: fixed;
 }

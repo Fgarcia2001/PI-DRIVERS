@@ -35,7 +35,6 @@ const rootReducer = (state = initialState, action) => {
         currentPage: 0,
       };
     case GET_DRIVER_NAME:
-      console.log(payload);
       return {
         ...state,
         allDrivers: [...payload].splice(0, items_x_page),

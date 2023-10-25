@@ -1,0 +1,42 @@
+.container {
+  margin: auto;
+  margin-top: 60px;
+  width: 60%;
+  height: 700px;
+  display: flex;
+
+  background-color: rgba(187, 107, 107, 0.327);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  border-radius: 10%;
+  border: 3px solid rgb(0, 0, 0);
+}
+.container:hover {
+  backdrop-filter: blur(1px);
+}
+.img {
+  margin-left: 50px;
+  width: 500px;
+  border-radius: 20px;
+}
+.contTitles {
+  margin-left: 40px;
+  background-color: rgba(255, 0, 0, 0);
+  width: 50%;
+}
+.titles {
+  background-color: rgba(255, 255, 255, 0.662);
+  backdrop-filter: blur(30px);
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 80%;
+  border-radius: 5px;
+  border: 2px solid black;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.titles:hover {
+  backdrop-filter: blur(30px);
+  background-color: rgb(250, 98, 98);
+}

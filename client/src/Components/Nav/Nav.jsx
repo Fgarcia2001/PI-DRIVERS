@@ -5,11 +5,19 @@ import SearchBar from "../SearchBar/SearchBar";
 const Nav = () => {
   return (
     <div className={style.containerNav}>
-      <Link to="/home">HOME</Link>
-      <Link to="/create">CREATE DRIVER</Link>
-      <Link to="/delete">DELETE DRIVER</Link>
+      <Link to="/home" className={style.botones}>
+        HOME
+      </Link>
+      <Link to="/create" className={style.botones}>
+        CREATE
+      </Link>
+      <Link to="/about" className={style.botones}>
+        ABOUT
+      </Link>
       <SearchBar />
-      <Link to="/">EXIT</Link>
+      <Link to="/" className={style.exit}>
+        EXIT
+      </Link>
     </div>
   );
 };
