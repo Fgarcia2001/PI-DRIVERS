@@ -139,7 +139,11 @@ const Form = () => {
         <label className={style.label}>Teams</label>
         <select onChange={handleChange} name="teams" value={state.teams}>
           {teams.map((team) => {
-            return <option value={team}>{team}</option>;
+            return (
+              <option value={team} key={team}>
+                {team}
+              </option>
+            );
           })}
         </select>
         {errors.teams && <p>{errors.teams}</p>}

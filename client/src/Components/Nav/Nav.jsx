@@ -5,10 +5,11 @@ import SearchBar from "../SearchBar/SearchBar";
 const Nav = () => {
   return (
     <div className={style.containerNav}>
-      <Link to="/">LANDING</Link>
       <Link to="/home">HOME</Link>
       <Link to="/create">CREATE DRIVER</Link>
+      <Link to="/delete">DELETE DRIVER</Link>
       <SearchBar />
+      <Link to="/">EXIT</Link>
     </div>
   );
 };

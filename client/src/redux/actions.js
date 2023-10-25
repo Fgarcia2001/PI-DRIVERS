@@ -6,7 +6,10 @@ import {
   POST_DRIVER,
   CLEAR_DETAIL,
   PAGINATE,
-  FILTER,
+  ALPHABETIC_ORDER,
+  BIRTHDATE_ORDER,
+  FILTER_BY_ORIGIN,
+  FILTER_BY_TEAM,
 } from "./types";
 import axios from "axios";
 
@@ -16,7 +19,6 @@ const getDrivers = () => {
   return async (dispatch) => {
     try {
       const drivers = (await axios(`${URL_DRIVERS}`)).data;
-      console.log(drivers);
       dispatch({ type: GET_DRIVERS, payload: drivers });
     } catch (error) {
       console.log(error);
@@ -85,15 +87,40 @@ const page = (order) => {
   };
 };
 
-const driverFilters = (value) => {
+const orderAlphabetic = (value) => {
   return (dispatch) => {
     dispatch({
-      type: FILTER,
+      type: ALPHABETIC_ORDER,
       payload: value,
     });
   };
 };
 
+const orderBirthdate = (value) => {
+  return (dispatch) => {
+    dispatch({
+      type: BIRTHDATE_ORDER,
+      payload: value,
+    });
+  };
+};
+const filterByOrigin = (value) => {
+  return (dispatch) => {
+    dispatch({
+      type: FILTER_BY_ORIGIN,
+      payload: value,
+    });
+  };
+};
+
+const filterByTeam = (value) => {
+  return (dispatch) => {
+    dispatch({
+      type: FILTER_BY_TEAM,
+      payload: value,
+    });
+  };
+};
 export {
   getDrivers,
   getDriverId,
@@ -102,5 +129,8 @@ export {
   postDriver,
   clearDetail,
   page,
-  driverFilters,
+  orderAlphabetic,
+  orderBirthdate,
+  filterByOrigin,
+  filterByTeam,
 };

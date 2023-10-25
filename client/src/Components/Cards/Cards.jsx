@@ -21,7 +21,7 @@ const Cards = () => {
           </Link>
         ))
       ) : (
-        <h2>No se encontró ningún driver</h2>
+        <h2>No se encontró ningún resultado</h2>
       )}
     </div>
   );
