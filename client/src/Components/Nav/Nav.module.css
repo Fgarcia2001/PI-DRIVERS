@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-around;
   height: 60px;
-  background: linear-gradient(to right, #ff00007d, #0000ff86);
+  background-color: #400101;
+  /* background: linear-gradient(to right, #9e0008, #eb000c); */
   align-items: center;
   border-bottom: 2px solid rgba(247, 242, 242, 0.209);
   backdrop-filter: blur(5px);
@@ -44,7 +45,7 @@
   border: 2px solid black;
   height: 50%;
   width: 85px;
-  background-color: rgb(255, 25, 25);
+  background-color: #f23e2e;
   text-decoration: none;
   transition: transform 0.1s;
 }

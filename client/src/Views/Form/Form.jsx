@@ -123,6 +123,7 @@ const Form = () => {
         )}
         <label className={style.label}>IMAGE</label>
         <input
+          value={state.image}
           className={style.input}
           name="image"
           onChange={handleChange}
@@ -131,12 +132,17 @@ const Form = () => {
 
         <label className={style.label}>DESCRIPTION</label>
         <input
+          value={state.description}
           className={style.input}
           name="description"
           onChange={handleChange}
           type="text"
         />
-
+        {errors.description ? (
+          <p className={style.error}>{errors.description}</p>
+        ) : (
+          <p className={style.espacio}> </p>
+        )}
         <label className={style.label}>BIRTHDATE</label>
         <input
           className={style.input}

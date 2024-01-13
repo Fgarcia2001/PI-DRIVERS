@@ -1,6 +1,6 @@
 .cardContainer {
-  background-color: rgba(244, 39, 39, 0.386);
   backdrop-filter: blur(10px);
+  background-color: rgba(70, 0, 0, 0.453);
   width: 400px;
   height: 520px;
   border-radius: 20px;

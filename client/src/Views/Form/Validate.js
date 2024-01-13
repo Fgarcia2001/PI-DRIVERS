@@ -1,6 +1,8 @@
 const validate = (state) => {
   const errors = {};
-
+  if (state.description.length > 50) {
+    errors.description = "Debe contener menos de 50 caracteres";
+  }
   if (
     !/^[A-Za-z]+$/.test(state.name) ||
     state.name.length < 2 ||

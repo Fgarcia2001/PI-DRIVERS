@@ -4,7 +4,6 @@
   width: 60%;
   height: 700px;
   display: flex;
-
   background-color: rgba(187, 107, 107, 0.327);
   backdrop-filter: blur(10px);
   align-items: center;
@@ -15,8 +14,8 @@
   backdrop-filter: blur(1px);
 }
 .img {
-  margin-left: 50px;
-  width: 500px;
+  margin-left: 3rem;
+  width: 30rem;
   border-radius: 20px;
 }
 .contTitles {
