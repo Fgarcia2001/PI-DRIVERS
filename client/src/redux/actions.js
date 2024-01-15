@@ -10,6 +10,7 @@ import {
   BIRTHDATE_ORDER,
   FILTER_BY_ORIGIN,
   FILTER_BY_TEAM,
+  GET_NATIONALITIES,
 } from "./types";
 import axios from "axios";
 
@@ -121,6 +122,16 @@ const filterByTeam = (value) => {
     });
   };
 };
+
+const getNationalities = () => {
+  return async (dispatch) => {
+    const response = await axios.get("https://restcountries.com/v3.1/all");
+    dispatch({
+      type: GET_NATIONALITIES,
+      payload: response.data,
+    });
+  };
+};
 export {
   getDrivers,
   getDriverId,
@@ -133,4 +144,5 @@ export {
   orderBirthdate,
   filterByOrigin,
   filterByTeam,
+  getNationalities,
 };

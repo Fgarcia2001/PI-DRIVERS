@@ -9,6 +9,7 @@ import {
   BIRTHDATE_ORDER,
   FILTER_BY_ORIGIN,
   FILTER_BY_TEAM,
+  GET_NATIONALITIES,
 } from "./types";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   teams: [],
   detail: {},
   driverFiltered: [],
+  nationalities: [],
   filters: false,
   currentPage: 0,
 };
@@ -248,6 +250,14 @@ const rootReducer = (state = initialState, action) => {
         driverFiltered: fltered,
         currentPage: 0,
         filters: true,
+      };
+    case GET_NATIONALITIES:
+      let nacionalidades = payload.map((pais) => pais.demonyms?.eng?.m);
+      nacionalidades = nacionalidades.sort();
+
+      return {
+        ...state,
+        nationalities: nacionalidades,
       };
     default:
       return {
