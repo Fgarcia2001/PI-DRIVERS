@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Landing.module.css";
 import rueda from "../../images/rueda.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { getDrivers } from "../../redux/actions";
 
 const Landing = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDrivers());
+  }, []);
   return (
     <div className={style.landing}>
       <div className={style.title}>

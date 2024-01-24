@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import style from "./Form.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import ImageHandler from "./ImageUploader/ImageUploader";
 import { getNationalities, getTeams, postDriver } from "../../redux/actions";
 import validate from "./Validate";
 const Form = () => {
@@ -18,11 +20,26 @@ const Form = () => {
     birthdate: "",
     teams: [],
   });
-  console.log(state);
+
   const [errors, setErrors] = useState({});
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const chageUploadImage = async (event) => {
+    const file = event.target.files[0];
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "Presets_react");
 
+    const response = await axios.post(
+      `https://api.clodinary.com/v1_1/dcqtgje4b/image/upload`,
+      data
+    );
+    setState({
+      ...state,
+      image: response.data.secure_url,
+    });
+    console.log(state.image);
+  };
   const handleChange = (event) => {
     if (event.target.name === "teams") {
       if (!state.teams.includes(event.target.value)) {
@@ -95,105 +112,124 @@ const Form = () => {
         </Link>
 
         <form className={style.form} onSubmit={handleSubmit}>
-          <label className={style.label}>NAME</label>
-          <input
-            className={style.input}
-            name="name"
-            value={state.name}
-            onChange={handleChange}
-            type="text"
-          />
-          {errors.name ? (
-            <p className={style.error}>{errors.name}</p>
-          ) : (
-            <p> </p>
-          )}
-          <label className={style.label}>LASTNAME</label>
-          <input
-            className={style.input}
-            value={state.surname}
-            name="surname"
-            onChange={handleChange}
-            type="text"
-          />
-          {errors.surname ? (
-            <p className={style.error}>{errors.surname}</p>
-          ) : (
-            <p> </p>
-          )}
-          <label className={style.label}>NATIONALITY</label>
-          <select
-            name="nationality"
-            onChange={handleChange}
-            value={state.nationality}
-          >
-            {nacionalidades.map((nac) => (
-              <option value={nac}>{nac}</option>
-            ))}
-          </select>
+          <div className={style.namesurname}>
+            <div className={style.divName}>
+              <label className={style.label}>Name</label>
+              <input
+                className={style.input}
+                name="name"
+                value={state.name}
+                onChange={handleChange}
+                type="text"
+              />
+              {errors.name ? (
+                <p className={style.error}>{errors.name}</p>
+              ) : (
+                <p> </p>
+              )}
+            </div>
+            <div className={style.divName}>
+              <label className={style.label}>Lastname</label>
+              <input
+                className={style.input}
+                value={state.surname}
+                name="surname"
+                onChange={handleChange}
+                type="text"
+              />
+              {errors.surname ? (
+                <p className={style.error}>{errors.surname}</p>
+              ) : (
+                <p> </p>
+              )}
+            </div>
+          </div>
+          <div className={style.natAndBirth}>
+            <div className={style.divName}>
+              <label className={style.label}>Nationality</label>
+              <select
+                name="nationality"
+                onChange={handleChange}
+                value={state.nationality}
+                className={style.selectNat}
+              >
+                {nacionalidades.map((nac) => (
+                  <option value={nac}>{nac}</option>
+                ))}
+              </select>
 
-          {errors.nationality ? (
-            <p className={style.error}>{errors.nationality}</p>
-          ) : (
-            <p className={style.espacio}> </p>
-          )}
-          <label className={style.label}>IMAGE</label>
-          <input
-            value={state.image}
-            className={style.input}
-            name="image"
-            onChange={handleChange}
-            type="text"
-          />
-
-          <label className={style.label}>DESCRIPTION</label>
-          <input
-            value={state.description}
-            className={style.input}
-            name="description"
-            onChange={handleChange}
-            type="text"
-          />
-          {errors.description ? (
-            <p className={style.error}>{errors.description}</p>
-          ) : (
-            <p className={style.espacio}> </p>
-          )}
-          <label className={style.label}>BIRTHDATE</label>
-          <input
-            className={style.input}
-            name="birthdate"
-            onChange={handleChange}
-            type="date"
-          />
-          <label className={style.label}>TEAMS</label>
-          <select
-            onChange={handleChange}
-            name="teams"
-            value={state.teams}
-            className={style.teamSelection}
-          >
-            {teams.map((team) => {
-              return (
-                <option value={team} key={team}>
-                  {team}
-                </option>
-              );
-            })}
-          </select>
-          {errors.teams && <p className={style.error}>{errors.teams}</p>}
-          <div className={style.teams}>
-            {state.teams.map((selectedTeam) => (
-              <div key={selectedTeam} className={style.team}>
-                {selectedTeam}
-                <button
-                  className={style.button}
-                  onClick={() => removeTeam(selectedTeam)}
-                >
-                  X
-                </button>
+              {errors.nationality ? (
+                <p className={style.error}>{errors.nationality}</p>
+              ) : (
+                <p> </p>
+              )}
+            </div>
+            <div className={style.divName}>
+              <label className={style.label}>Birthdate</label>
+              <input
+                className={style.input}
+                name="birthdate"
+                onChange={handleChange}
+                type="date"
+              />
+            </div>
+          </div>
+          <div className={style.divDescription}>
+            <div className={style.description}>
+              <label className={style.labelDescription}>Description </label>
+              <input
+                value={state.description}
+                className={style.input}
+                name="description"
+                onChange={handleChange}
+                type="text"
+              />
+              {errors.description ? (
+                <p className={style.error}>{errors.description}</p>
+              ) : (
+                <p></p>
+              )}
+            </div>
+          </div>
+          <div className={style.divImageTeams}>
+            <div className={style.divImagen}>
+              <ImageHandler
+                onImageChange={(imageUrl) =>
+                  setState({ ...state, image: imageUrl })
+                }
+              />
+            </div>
+            <div className={style.divTeams}>
+              <label className={style.label}>TEAMS</label>
+              <select
+                onChange={handleChange}
+                name="teams"
+                value={state.teams}
+                className={style.teamSelection}
+              >
+                {teams.map((team) => {
+                  return (
+                    <option value={team} key={team}>
+                      {team}
+                    </option>
+                  );
+                })}
+              </select>
+              {errors.teams && <p className={style.error}>{errors.teams}</p>}
+              <div className={style.teams}>
+                {state.teams.map((selectedTeam) => (
+                  <div key={selectedTeam} className={style.team}>
+                    {selectedTeam}
+                    <button
+                      className={style.button}
+                      onClick={() => removeTeam(selectedTeam)}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
           <input
             className={style.submit}

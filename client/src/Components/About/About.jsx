@@ -14,9 +14,13 @@ const About = () => {
         <h2 className={style.titles}>Nationality| Argentinian</h2>
         <h2 className={style.titles}>Birthdate| 2001- 07 -10</h2>
         <h2 className={style.titles}>
-          Description: I'm student from "Soy Henry" and I am in the PI stage{" "}
+          Description: "Full Stack Developer with a focus on Front-end, capable
+          of executing web projects using technologies such as React, Redux,
+          Javascript, Express, Node.js, Sequelize, and PostgreSQL. I graduated
+          from the Soy Henry bootcamp and am currently studying to become a
+          Systems Analyst at the National University of Rosario (UNR)."{" "}
         </h2>
-        <h2 className={style.titles}>Teams: Soy Henry</h2>
+        <h2 className={style.titles}>Teams: Ferrari, Redbull</h2>
       </div>
     </div>
   );

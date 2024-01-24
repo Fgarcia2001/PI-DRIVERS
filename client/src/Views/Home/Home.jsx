@@ -1,6 +1,10 @@
 import React from "react";
 import Cards from "../../Components/Cards/Cards";
 import style from "./Home.module.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -115,14 +119,14 @@ const Home = () => {
               onClick={pagination}
               className={style.flechasIzq}
             >
-              &lt;===
+              <FontAwesomeIcon icon={faArrowLeft} />
             </button>
             <button
               name="next"
               onClick={pagination}
               className={style.flechasDer}
             >
-              ===&gt;
+              <FontAwesomeIcon icon={faArrowRight} />
             </button>
           </div>
         </div>

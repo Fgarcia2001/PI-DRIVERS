@@ -28,30 +28,96 @@
 }
 .form {
   margin-top: 20px;
-
   width: 100%;
   height: 90%;
-
-  background-color: rgba(238, 111, 111, 0.12);
 }
+.divImagen {
+  width: 15em;
+  background-color: red;
+}
+.divTeams {
+  width: 15em;
+  background-color: palegreen;
+}
+.divImageTeams {
+  width: 100%;
+  height: 200px;
 
-.label {
   display: flex;
   justify-content: center;
-  background-color: rgb(255, 255, 255);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
-  width: 51%;
-  margin-top: 10px;
-  border-radius: 5px 5px 0 0;
+  gap: 5rem;
+}
+.divName {
+  width: 15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.namesurname {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+.natAndBirth {
+  justify-content: center;
+  gap: 5rem;
+  display: flex;
+}
+.selectNat {
+  background-color: rgb(200, 200, 200);
+  width: 90%;
+  height: 25px;
+  border-radius: 3rem;
   border: 1px solid black;
 }
+.divDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.labelDescription {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  height: 25px;
+  width: 100%;
+  padding-left: 3rem;
+}
+.description {
+  width: 37rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pDescription {
+  display: inline-block;
+  margin: 0;
+}
+.label {
+  padding-left: 20px;
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
 .input {
-  width: 50%;
+  background-color: rgb(200, 200, 200);
+  border-radius: 3rem;
+  height: 25px;
+  width: 90%;
+  border: 1px solid black;
 }
 .error {
-  margin-top: 4px;
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-weight: 700;
+  width: 100%;
+  height: 30px;
+  color: rgb(1, 0, 0);
 }
 
 .teams {

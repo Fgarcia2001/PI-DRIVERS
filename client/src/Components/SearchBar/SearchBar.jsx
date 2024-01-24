@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { getDriverName } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import style from "./SearchBar.module.css";
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,9 @@ const SearchBar = () => {
           className={style.search}
           placeholder="Name"
         />
-        <input type="submit" className={style.enviar} value="Search"></input>
+        <button type="submit" className={style.enviar}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
       </form>
     </div>
   );

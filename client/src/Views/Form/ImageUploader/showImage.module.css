@@ -1,0 +1,11 @@
+.divSelectImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.imagen {
+  position: fixed;
+  top: 0;
+  width: 150px;
+}
