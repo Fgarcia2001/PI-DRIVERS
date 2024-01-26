@@ -66,8 +66,6 @@ const Home = () => {
               onChange={filterOrigin}
               className={style.selector}
             >
-              <option>Drivers</option>
-              {/* default */}
               <option value="existentes" key="existentes">
                 Existing
               </option>
@@ -80,8 +78,6 @@ const Home = () => {
               onChange={filterTeam}
               className={style.selector}
             >
-              <option>Teams</option>
-              {/* default */}
               {allTeams.map((team) => {
                 return (
                   <option value={team} key={team}>
@@ -99,8 +95,6 @@ const Home = () => {
               onChange={alphabetic}
               className={style.selector}
             >
-              <option value="">Alphabetic</option>
-              {/* default */}
               <option value="AZ" key="AZ">
                 A-Z
               </option>
@@ -113,13 +107,11 @@ const Home = () => {
               onChange={birthdate}
               className={style.selector}
             >
-              <option value="age">Age</option>
-              {/* default */}
               <option value="jovenes" key="jovenes">
-                - +
+                Age - +
               </option>
               <option value="grandes" key="grandes">
-                + -
+                Age + -
               </option>
             </select>
           </div>
