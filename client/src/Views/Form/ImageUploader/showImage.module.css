@@ -1,11 +1,59 @@
 .divSelectImage {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 .imagen {
+  position: absolute;
+  border-radius: 10%;
+  width: 500px;
+}
+.divConImagen {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
-  width: 150px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.605);
+}
+.link {
+  margin-top: 10px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  width: 70px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  border: 2px solid rgba(255, 2, 2, 0.582);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-radius: 10px;
+  transition: transform 0s;
+}
+.link:hover {
+  transform: scale(1.1);
+}
+.cargandoImage {
+  color: white;
+  font-weight: 700;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-weight: 700;
+  width: 100%;
+  height: 30px;
+  color: rgb(1, 0, 0);
 }

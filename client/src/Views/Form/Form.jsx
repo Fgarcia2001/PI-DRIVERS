@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import style from "./Form.module.css";
+
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ImageHandler from "./ImageUploader/ImageUploader";
+import DriverCreado from "./DriverCreado";
 import { getNationalities, getTeams, postDriver } from "../../redux/actions";
 import validate from "./Validate";
 const Form = () => {
   const dispatch = useDispatch();
   const teams = useSelector((state) => state.teams);
   const nacionalidades = useSelector((state) => state.nationalities);
+
   const [state, setState] = useState({
     name: "",
     surname: "",
@@ -22,6 +25,7 @@ const Form = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [post, setPost] = useState(false);
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const chageUploadImage = async (event) => {
@@ -38,7 +42,6 @@ const Form = () => {
       ...state,
       image: response.data.secure_url,
     });
-    console.log(state.image);
   };
   const handleChange = (event) => {
     if (event.target.name === "teams") {
@@ -93,18 +96,25 @@ const Form = () => {
       }
       const hasErrors = Object.values(errors).some((error) => error.length > 0);
       setIsSubmitDisabled(hasErrors);
+      return () => {
+        setPost(false);
+      };
     },
     [dispatch],
     [errors]
   );
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(postDriver(state));
+    const response = await dispatch(postDriver(state));
+    if (response === true) {
+      setPost(true);
+    }
   };
 
   return (
     <div className={style.create}>
+      {post && <DriverCreado name={state.name} />}
       <p className={style.title}>Create your driver</p>
       <div className={style.container}>
         <Link to="/home" className={style.link}>
@@ -231,12 +241,14 @@ const Form = () => {
               </div>
             </div>
           </div>
-          <input
-            className={style.submit}
-            value="Submit"
-            type="submit"
-            disabled={isSubmitDisabled}
-          />
+          <div className={style.divBoton}>
+            <input
+              className={style.submit}
+              value="Submit"
+              type="submit"
+              disabled={isSubmitDisabled}
+            />
+          </div>
         </form>
       </div>
     </div>

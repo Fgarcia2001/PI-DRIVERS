@@ -64,9 +64,9 @@ const postDriver = (state) => {
   return async () => {
     try {
       const response = await axios.post(`${URL_DRIVERS}`, state);
-      alert(`${response.data}`);
+      return true;
     } catch (error) {
-      alert("Error al crear el driver");
+      alert("Error al crear el driver o completa los campos");
     }
   };
 };

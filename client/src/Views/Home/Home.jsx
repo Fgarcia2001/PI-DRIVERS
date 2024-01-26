@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Cards from "../../Components/Cards/Cards";
 import style from "./Home.module.css";
-
+import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +11,7 @@ import {
   getDrivers,
   getTeams,
   page,
+  getDriverName,
   orderAlphabetic,
   orderBirthdate,
   filterByOrigin,
@@ -20,12 +21,18 @@ const Home = () => {
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.allDrivers);
   const allTeams = useSelector((state) => state.teams);
+  const location = useLocation();
+  const driverCreado = location.search.includes("from=driverCreado");
 
   useEffect(() => {
-    if (!drivers.length) {
-      dispatch(getDrivers());
+    if (driverCreado) {
+      dispatch(getDriverName(location.state.name));
+    } else {
+      if (!drivers.length) {
+        dispatch(getDrivers());
+      }
+      dispatch(getTeams());
     }
-    dispatch(getTeams());
   }, []);
 
   const pagination = (event) => {
@@ -59,11 +66,13 @@ const Home = () => {
               onChange={filterOrigin}
               className={style.selector}
             >
+              <option>Drivers</option>
+              {/* default */}
               <option value="existentes" key="existentes">
-                Ya existentes
+                Existing
               </option>
               <option value="creados" key="creados">
-                Creados
+                Created
               </option>
             </select>
             <select
@@ -71,6 +80,8 @@ const Home = () => {
               onChange={filterTeam}
               className={style.selector}
             >
+              <option>Teams</option>
+              {/* default */}
               {allTeams.map((team) => {
                 return (
                   <option value={team} key={team}>
@@ -88,6 +99,8 @@ const Home = () => {
               onChange={alphabetic}
               className={style.selector}
             >
+              <option value="">Alphabetic</option>
+              {/* default */}
               <option value="AZ" key="AZ">
                 A-Z
               </option>
@@ -100,11 +113,13 @@ const Home = () => {
               onChange={birthdate}
               className={style.selector}
             >
+              <option value="age">Age</option>
+              {/* default */}
               <option value="jovenes" key="jovenes">
-                Mas jovenes
+                - +
               </option>
               <option value="grandes" key="grandes">
-                Mas grandes
+                + -
               </option>
             </select>
           </div>

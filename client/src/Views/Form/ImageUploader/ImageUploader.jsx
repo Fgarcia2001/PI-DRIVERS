@@ -62,23 +62,25 @@ const ImageHandler = ({ onImageChange, initialImageUrl }) => {
 
   return (
     <div className={style.divSelectImage}>
-      <p className="image-formats">Formatos válidos: .jpg, .jpeg .png .webp</p>
+      <p className={style.error}>*Only: .jpg .jpeg .png .webp</p>
       <input
         id="image"
         name="image"
         type="file"
         ref={fileInput}
         onChange={handleFileChange}
+        className={style.archivo}
       />
-      {isUploading && <p className="uploading-image">Cargando Imagen...</p>}
+      {isUploading && <p className={style.cargandoImage}>Cargando Imagen...</p>}
+
       {showImage && previewImage && !isUploading && (
-        <div>
+        <div className={style.divConImagen}>
           <img src={previewImage} alt="driver" className={style.imagen} />
         </div>
       )}
       {previewImage && !showImage && (
-        <button type="button" onClick={seeImage}>
-          See image
+        <button type="button" onClick={seeImage} className={style.link}>
+          Show image
         </button>
       )}
     </div>
