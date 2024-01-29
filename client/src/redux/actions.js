@@ -20,6 +20,7 @@ const getDrivers = () => {
   return async (dispatch) => {
     try {
       const drivers = (await axios(`${URL_DRIVERS}`)).data;
+
       dispatch({ type: GET_DRIVERS, payload: drivers });
     } catch (error) {
       console.log(error);

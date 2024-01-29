@@ -126,14 +126,14 @@ const Home = () => {
               onClick={pagination}
               className={style.flechasIzq}
             >
-              <FontAwesomeIcon icon={faArrowLeft} />
+              {"<=="}
             </button>
             <button
               name="next"
               onClick={pagination}
               className={style.flechasDer}
             >
-              <FontAwesomeIcon icon={faArrowRight} />
+              {"==>"}
             </button>
           </div>
         </div>

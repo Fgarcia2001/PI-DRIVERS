@@ -72,6 +72,7 @@ const rootReducer = (state = initialState, action) => {
         if (payload === "next" && firstIndex >= state.driverFiltered.length)
           return state;
         else if (payload === "prev" && prev_page < 0) return state;
+
         return {
           ...state,
           allDrivers: [...state.driverFiltered].splice(
@@ -166,9 +167,11 @@ const rootReducer = (state = initialState, action) => {
       if (payload === "jovenes") {
         let jovenes = [];
         if (state.filters) {
+          console.log(state.allDriversCopy);
           jovenes = [...state.allDrivers].sort((a, b) =>
             b.birthdate.localeCompare(a.birthdate)
           );
+          console.log(jovenes);
           return {
             ...state,
             allDrivers: [...jovenes].slice(0, items_x_page),
