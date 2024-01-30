@@ -14,7 +14,8 @@ import {
 } from "./types";
 import axios from "axios";
 
-const URL_DRIVERS = "http://localhost:3001/drivers";
+const URL_DRIVERS = "https://drivers-back.onrender.com/drivers";
+const URL_TEAMS = "https://drivers-back.onrender.com/teams";
 
 const getDrivers = () => {
   return async (dispatch) => {
@@ -53,7 +54,7 @@ const getDriverName = (driver) => {
 const getTeams = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/teams");
+      const response = await axios.get(URL_TEAMS);
       dispatch({ type: GET_TEAMS, payload: response.data });
     } catch (error) {
       console.log(error);
